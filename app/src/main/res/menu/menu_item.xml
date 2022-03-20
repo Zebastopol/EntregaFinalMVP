@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_registrar"
+            android:title="Registrar Equipo"
+            android:icon="@drawable/ic_register"
+            android:iconTint="@color/teal_700"
+            android:checked="true"/>
+
+        <item
+            android:id="@+id/nav_ver"
+            android:title="Ver Registros"
+            android:icon="@drawable/ic_ver"
+            android:iconTint="@color/teal_700"/>
+
+        <item
+            android:id="@+id/nav_eliminar"
+            android:title="Eliminar Registros"
+            android:icon="@drawable/ic_delete"
+            android:iconTint="@color/teal_700"/>
+    </group>
+
+</menu>
