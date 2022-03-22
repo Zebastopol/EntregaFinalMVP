@@ -48,4 +48,4 @@ public class RegistroEquipoInteractorImpl implements RegistroEquipoInteractor {
 
 
     }
-}
+

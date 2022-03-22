@@ -28,6 +28,9 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.example.entregafinalmvp.R;
+import com.example.entregafinalmvp.interactor.usocamara.Permisos;
+import com.example.entregafinalmvp.view.fragmentos.FragEliminarRegistro;
+import com.example.entregafinalmvp.view.fragmentos.FragMostrarEquipos;
 import com.example.entregafinalmvp.view.fragmentos.FragRegistrarEquipos;
 import com.google.android.material.navigation.NavigationView;
 
@@ -47,20 +50,16 @@ public class otraActividad extends AppCompatActivity implements NavigationView.O
     private static final int TAKE_PICTURE = 101; //detecta si se tomo la foto con la camara del celular
     private static final int REQUEST_PERMISSION_WRITE_STORAGE = 200; //detectar la respuesta del usuario si es ok
 
-    DrawerLayout myDrawer;
-    NavigationView myNav;
+    DrawerLayout myDrawerLayout;
+    NavigationView myNavigationView;
     Toolbar myToolbar;
     ActionBarDrawerToggle toogle; //para implementar el icono de hamburguesa
-
     //ImageView para mostrar la foto sacada en el fragmento
     ImageView imActual;
-
     //variable para nombrar fotos
-    String cod = "";
-
+    String codfoto = "";
     Bitmap bitmap;
     List<Bitmap> listaFotos = new ArrayList<>();
-
     String nombre = "";
 
     @Override
@@ -69,18 +68,16 @@ public class otraActividad extends AppCompatActivity implements NavigationView.O
         setContentView(R.layout.activity_otra_actividad);
 
         //vistas para implementar drawer
-        myDrawer = findViewById(R.id.myDrawerLayout);
-        myNav = findViewById(R.id.myNavigationView);
+        myDrawerLayout = findViewById(R.id.myDrawerLayout);
+        myNavigationView = findViewById(R.id.myNavigationView);
         myToolbar = findViewById(R.id.myToolbar);
-
-        //variable que viene de actividad anterior
+        /**variable que viene de actividad anterior EN FragRegistrarEquipos.java*/
         nombre = getIntent().getStringExtra("x");
-
+        /**variable que viene de actividad anterior*/
         //mostrar actionbar
         setSupportActionBar(myToolbar);
-
         //eventos click en items de navigationDrawer
-        myNav.setNavigationItemSelectedListener(this);
+        myNavigationView.setNavigationItemSelectedListener(this);
 
         //para iniciar fragmento
         getSupportFragmentManager()
@@ -92,7 +89,7 @@ public class otraActividad extends AppCompatActivity implements NavigationView.O
         //para activar icono hamburguesa
         //toogle = new ActionBarDrawerToggle(this, myDrawer, myToolbar, R.string.drawer_open, R.string.drawer_close);
         toogle = setDrawerToogle();
-        myDrawer.addDrawerListener(toogle); //para oir al icono de hamburguesa
+        myDrawerLayout.addDrawerListener(toogle); //para oir al icono de hamburguesa
 
     }
 
@@ -126,12 +123,7 @@ public class otraActividad extends AppCompatActivity implements NavigationView.O
     /*
      * tomar foto (abre intent implicito camara)
      */
-    public void tomarFoto(){
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (intent.resolveActivity(getPackageManager()) != null){
-            startActivityForResult(intent, TAKE_PICTURE);
-        }
-    }
+
     /*
      * tomar foto (abre intent implicito camara)
      */
@@ -174,7 +166,7 @@ public class otraActividad extends AppCompatActivity implements NavigationView.O
      * implementacion permisos de almacenamiento y guardado de fotos permisosAlmacenamiento1()
      */
     public void permisosAlmacenamiento(String codigo){
-        cod = codigo;
+        codfoto = codigo;
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P){ //Apis mas antiguas < 28
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
@@ -217,7 +209,7 @@ public class otraActividad extends AppCompatActivity implements NavigationView.O
             String tiempo = formatter.format(new Date());
 
             //agrego el dueño de la foto
-            String filename = cod + "@foto1" + "@" + tiempo;
+            String filename = codfoto + "@foto1" + "@" + tiempo;
 
             values.put(MediaStore.Images.Media.DISPLAY_NAME, filename);
             values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
@@ -246,7 +238,7 @@ public class otraActividad extends AppCompatActivity implements NavigationView.O
             String tiempo = formatter.format(new Date());
 
             //agrego el dueño de la foto
-            String filename = cod + "@foto1" + "@" + tiempo + ".jpg"; //nombre del archivo
+            String filename = codfoto + "@foto1" + "@" + tiempo + ".jpg"; //nombre del archivo
 
             file = new File(imageDir, filename);
 
@@ -296,7 +288,7 @@ public class otraActividad extends AppCompatActivity implements NavigationView.O
             String tiempo = formatter.format(new Date());
 
             //agrego el dueño de la foto
-            String filename = cod + "@foto2" + "@" + tiempo;
+            String filename = codfoto + "@foto2" + "@" + tiempo;
 
             values.put(MediaStore.Images.Media.DISPLAY_NAME, filename);
             values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
@@ -325,7 +317,7 @@ public class otraActividad extends AppCompatActivity implements NavigationView.O
             String tiempo = formatter.format(new Date());
 
             //agrego el dueño de la foto
-            String filename = cod + "@foto2" + "@" + tiempo + ".jpg"; //nombre del archivo
+            String filename = codfoto + "@foto2" + "@" + tiempo + ".jpg"; //nombre del archivo
 
             file = new File(imageDir, filename);
 
@@ -426,7 +418,7 @@ public class otraActividad extends AppCompatActivity implements NavigationView.O
      * @return
      */
     private ActionBarDrawerToggle setDrawerToogle() {
-        return new ActionBarDrawerToggle(this, myDrawer, myToolbar, R.string.drawer_open, R.string.drawer_close);
+        return new ActionBarDrawerToggle(this, myDrawerLayout, myToolbar, R.string.drawer_open, R.string.drawer_close);
     }
 
     /**
@@ -450,18 +442,18 @@ public class otraActividad extends AppCompatActivity implements NavigationView.O
         FragmentTransaction ft = fm.beginTransaction();
 
         switch (item.getItemId()) {
-            case R.id.nav_registro:
-                ft.replace(R.id.myFrame, new FragRegistroEquipo()).commit();
+            case R.id.nav_registrar:
+                ft.replace(R.id.myFrame, new FragRegistrarEquipos()).commit();
                 break;
             case R.id.nav_ver:
-                ft.replace(R.id.myFrame, new FragVerEquipos()).commit();
+                ft.replace(R.id.myFrame, new FragMostrarEquipos()).commit();
                 break;
             case R.id.nav_eliminar:
-                ft.replace(R.id.myFrame, new FragEliminarRegistroEquipos()).commit();
+                ft.replace(R.id.myFrame, new FragEliminarRegistro()).commit();
                 break;
         }
         setTitle(item.getTitle() + " - " + nombre); //para mostrar el título
-        myDrawer.closeDrawers(); //para cerrar drawer
+        myDrawerLayout.closeDrawers(); //para cerrar drawer
         return true;
     }
 }

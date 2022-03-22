@@ -72,11 +72,11 @@ public class AdaptadorDatos extends RecyclerView.Adapter<AdaptadorDatos.ViewHold
 
         public ViewHolderDator(@NonNull View itemView) {
             super(itemView);
-            imagen1 = itemView.findViewById(R.id.img1Equipo);
-            imagen2 = itemView.findViewById(R.id.img2Equipo);
-            codigo = itemView.findViewById(R.id.txtCodigoEquipoL);
-            nombre = itemView.findViewById(R.id.txtNombreEquipoL);
-            fecha = itemView.findViewById(R.id.txtFechaEquipoL);
+            imagen1 = itemView.findViewById(R.id.img1);
+            imagen2 = itemView.findViewById(R.id.img2);
+            codigo = itemView.findViewById(R.id.txtCodigoIngreso);
+            nombre = itemView.findViewById(R.id.txtNombreIngreso);
+            fecha = itemView.findViewById(R.id.txtFechaIngreso);
             bolso = itemView.findViewById(R.id.txtBolsoEquipoL);
             cargador = itemView.findViewById(R.id.txtCargadorEquipoL);
         }

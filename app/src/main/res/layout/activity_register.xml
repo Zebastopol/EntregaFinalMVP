@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_log_register"
     tools:context=".view.actividades.Registro">
 
     <EditText
         android:id="@+id/txtNombre"
         android:layout_width="278dp"
         android:layout_height="55dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="300dp"
         android:ems="10"
         android:hint="Nombre"
+        android:textColor="@color/white"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +28,7 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="User"
-        android:inputType="textPersonName"
+        app:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
@@ -46,12 +49,22 @@
         android:id="@+id/btnRegistrar"
         android:layout_width="146dp"
         android:layout_height="66dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:onClick="registro"
         android:text="Registrar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.743"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPass1" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_height="393dp"
+        android:layout_marginBottom="544dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_logo_general" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.entregafinalmvp.R;
+import com.example.entregafinalmvp.interactor.bd.ConexionBD;
+import com.example.entregafinalmvp.interactor.modelRecyclerView.AdaptadorDatos;
+import com.example.entregafinalmvp.interactor.modelRecyclerView.RegistroEquiposDatos;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -35,7 +38,7 @@ public class FragMostrarEquipos extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_ver_equipos, container, false);
+        View v = inflater.inflate(R.layout.fragment_mostrar_equipos, container, false);
 
         File ruta = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         File fotos[] = ruta.listFiles();

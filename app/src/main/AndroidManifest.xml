@@ -8,9 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EntregaFinalMVP"
-        android:background="@drawable/ic_fondoLog2"
-        android:backgroundTint="@color/calipso">
+        android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
         <activity
             android:name=".view.actividades.otraActividad"
             android:exported="false" />

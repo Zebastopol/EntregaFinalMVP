@@ -1,14 +1,282 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.actividades.Registro">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center_vertical"
+    android:orientation="vertical"
+    android:background="@drawable/ic_inicio_pro"
+    tools:context=".view.fragmentos.FragRegistrarEquipos">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
+        android:id="@+id/txtViewFagRegis"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="98dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/teal_200"
+        android:gravity="center"
+        android:text="@string/Hola_ingresa_los_equipos"
+        android:textAlignment="center"
+        android:textSize="35dp"
+        android:textStyle="bold" />
 
-</FrameLayout>
+
+    <TextView
+        android:id="@+id/txtFechaIngreso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="608dp"
+        android:layout_gravity="bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:paddingBottom="60dp">
+
+            <EditText
+                android:id="@+id/txtCodigoIngreso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:hint="Código Ingreso"
+                android:inputType="textPersonName"
+                android:minHeight="48dp" />
+
+            <EditText
+                android:id="@+id/txtNombreIngreso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Nombre Cliente"
+                android:inputType="textPersonName"
+                android:minHeight="48dp" />
+
+
+            <TextView
+                android:id="@+id/txtCargador"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Cargador en Caja"
+                android:textColor="#070707"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rd1SiCargador"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Si" />
+
+                <RadioButton
+                    android:id="@+id/rd2NoCargador"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="No" />
+
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtGarantia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Garantía en Caja"
+                android:textColor="#070707"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rd3SiGarantia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Si" />
+
+                <RadioButton
+                    android:id="@+id/rd4NoGarantía"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="No" />
+
+            </RadioGroup>
+
+
+            <TextView
+                android:id="@+id/txtManual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Manual en Caja"
+                android:textColor="#070707"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rd5SiManual"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Si" />
+
+                <RadioButton
+                    android:id="@+id/rd6Manual"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="No" />
+
+            </RadioGroup>
+
+            <Switch
+                android:id="@+id/sw1Bolso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:minHeight="48dp"
+                android:text="Bolso"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Switch
+                android:id="@+id/sw2Encendido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:minHeight="48dp"
+                android:text="Enciende"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="2">
+
+                <Switch
+                    android:id="@+id/sw3Touchpad"
+                    android:layout_width="184dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:text="Touchpad"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/sw4Usb"
+                    android:layout_width="186dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:text="Usb"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/sw5Monitor"
+                    android:layout_width="184dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:text="Monitor"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/sw6Audio"
+                    android:layout_width="187dp"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:minHeight="48dp"
+                    android:text="Audio"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </GridLayout>
+
+            <Button
+                android:id="@+id/btnFoto1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Foto 1"
+                android:background="@drawable/round_button"
+                app:icon="@android:drawable/ic_menu_camera"
+                app:iconGravity="textStart" />
+
+            <ImageView
+                android:id="@+id/img1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/cardview_dark_background"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btnFoto2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Foto 2"
+                android:color="@color/calipso"
+                android:background="@drawable/round_button"
+                app:icon="@android:drawable/ic_menu_camera"
+                app:iconGravity="textStart" />
+
+            <ImageView
+                android:id="@+id/img2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/cardview_dark_background" />
+
+            <Button
+                android:id="@+id/btnRegistrarEquipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:enabled="true"
+                android:background="@drawable/round_button"
+                android:text="Registrar Equipo" />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/btnReturn"
+        android:layout_width="62dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right|end"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/round_button"
+        android:contentDescription="@string/Hola_ingresa_los_equipos"
+        android:minHeight="48dp"
+        app:srcCompat="@android:drawable/ic_menu_revert" />
+</LinearLayout>
