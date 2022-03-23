@@ -11,8 +11,12 @@ import com.example.entregafinalmvp.presenter.registroequipo.RegistroEquipoPresen
 public class RegistroEquipoInteractorImpl implements RegistroEquipoInteractor {
 
     @Override
-    public void registrar(String codigo, String nombre, String fecha,
-                          String bolso, String cargador, RegistroEquipoPresenterImpl presenter, Context contexto) {
+    public void registrarEquipo(String codigo, String nombre, String fecha,
+                          String marca, String modelo,
+                          String bolso, String cargador,
+                          String encendido,String touchpad,String usb, String monitor,
+                          String audio, String manual, String garantia,
+                          RegistroEquipoPresenterImpl presenter, Context context) {
         if(codigo.equals("")){
             presenter.setErrorCodigo();
         }
@@ -21,17 +25,27 @@ public class RegistroEquipoInteractorImpl implements RegistroEquipoInteractor {
         }
         else {
             //registrar en SQLite
-            ConexionBD conexion = new ConexionBD(contexto, "administracion", null, 1);
+            ConexionBD conexion = new ConexionBD(context, "administracion", null, 1);
             SQLiteDatabase bd = conexion.getWritableDatabase();
 
             ContentValues registro = new ContentValues();
             registro.put("codigo", codigo);
             registro.put("nombre", nombre);
             registro.put("fecha", fecha);
+            registro.put("marca", marca);
+            registro.put("modelo", modelo);
             registro.put("bolso", bolso);
-            registro.put("cargador", cargador);
+            registro.put("encendido", cargador);
+            registro.put("touchpad", cargador);
+            registro.put("usb", cargador);
+            registro.put("monitor", cargador);
+            registro.put("audio", cargador);
+            registro.put("manual", cargador);
+            registro.put("garantia", cargador);
 
-            long x = bd.insert("registroequipo", null, registro);
+
+
+            long x = bd.insert("equipos", null, registro);
 
             if(x > 0){
                 presenter.exito();

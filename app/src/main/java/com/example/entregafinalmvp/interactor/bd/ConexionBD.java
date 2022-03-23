@@ -14,9 +14,9 @@ public class ConexionBD extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase bd) {
                 bd.execSQL("create table usuarios(user text primary key,nombre text, pass text)");
-                bd.execSQL("create table equipos(coidgo int primary key, marca text" +
-                            ", modelo text, fecha text, equipo text, cargador text, manual text, garantia text"+
-                            ", sistemaop text, monitor text, audio text, touchpad text)");
+                bd.execSQL("create table equipos(codigo int primary key, marca text" +
+                            ", modelo text, fecha text, cargador text, manual text, garantia text"+
+                            ", encendido text, monitor text, audio text, touchpad text)");
     }
 
     @Override

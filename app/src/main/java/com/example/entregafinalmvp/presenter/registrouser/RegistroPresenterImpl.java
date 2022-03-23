@@ -19,7 +19,7 @@ public class RegistroPresenterImpl implements RegistroPresenter {
 
     @Override
     public void registrar(String nombre, String user, String pass, Context context){
-        interactor.registrar(nombre, user, pass, this, contexto);
+        interactor.registrar(nombre, user, pass, this, context);
     }
     @Override
     public void error() {

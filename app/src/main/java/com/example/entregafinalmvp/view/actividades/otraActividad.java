@@ -82,7 +82,7 @@ public class otraActividad extends AppCompatActivity implements NavigationView.O
         //para iniciar fragmento
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.myFrame, new FragRegistrarEquipos())
+                .add(R.id.FrameLayout, new FragRegistrarEquipos())
                 .commit();
         setTitle("Registrar equipo - " + nombre);
 
@@ -443,13 +443,13 @@ public class otraActividad extends AppCompatActivity implements NavigationView.O
 
         switch (item.getItemId()) {
             case R.id.nav_registrar:
-                ft.replace(R.id.myFrame, new FragRegistrarEquipos()).commit();
+                ft.replace(R.id.FrameLayout, new FragRegistrarEquipos()).commit();
                 break;
             case R.id.nav_ver:
-                ft.replace(R.id.myFrame, new FragMostrarEquipos()).commit();
+                ft.replace(R.id.FrameLayout, new FragMostrarEquipos()).commit();
                 break;
             case R.id.nav_eliminar:
-                ft.replace(R.id.myFrame, new FragEliminarRegistro()).commit();
+                ft.replace(R.id.FrameLayout, new FragEliminarRegistro()).commit();
                 break;
         }
         setTitle(item.getTitle() + " - " + nombre); //para mostrar el título

@@ -17,11 +17,19 @@ public class RegistroEquipoPresenterImpl implements RegistroEquipoPresenter {
         }
 
         @Override
-        public void registrar(String codigo, String nombre, String fecha, String bolso, String cargador, Context contexto) {
-            interactor.registrar(codigo, nombre, fecha, bolso, cargador, this, contexto);
+        public void registrarEquipo(String codigo, String nombre, String fecha,
+                              String marca, String modelo,
+                              String bolso, String cargador, String encendido, String touchpad,
+                              String usb, String monitor, String audio, String manual,
+                              String garantia, Context context) {
+            interactor.registrarEquipo(codigo, nombre, fecha, marca, modelo,
+                                bolso, cargador, encendido,touchpad,
+                                usb,monitor, audio, manual, garantia,this, context);
         }
 
-        @Override
+
+
+    @Override
         public void exito() {
             vista.exito();
         }

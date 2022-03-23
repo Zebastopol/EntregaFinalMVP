@@ -67,13 +67,10 @@ public class Login extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void noExiste() {
-        Toast.makeText(this, "El usuario no existe", Toast.LENGTH_SHORT).show();
-    }
+    public void noExiste() { Toast.makeText(this, "El usuario no existe", Toast.LENGTH_SHORT).show(); }
 
-    public void solicitarValidacion(View view){
-        presentador.validarUsuario(txtUser.getText().toString(), txtPass.getText().toString(), this);
-    }
+    public void solicitarValidacion(View view){ presentador.validarUsuario(txtUser.getText().toString(), txtPass.getText().toString(), this); }
 
-    public void abrirRegistro(View view){ startActivity(new Intent(this, Registro.class));    }
+    public void abrirRegistro(View view){ startActivity(new Intent(this, Registro.class)); }
+
 }

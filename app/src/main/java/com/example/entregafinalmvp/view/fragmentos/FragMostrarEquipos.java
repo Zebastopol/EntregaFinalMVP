@@ -27,7 +27,7 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragMostrarEquipos#newInstance} factory method to
+ * Use the {@link FragMostrarEquipos#} factory method to
  * create an instance of this fragment.
  */
 public class FragMostrarEquipos extends Fragment {
@@ -46,21 +46,40 @@ public class FragMostrarEquipos extends Fragment {
         String codigo = "";
         String nombre = "";
         String fecha = "";
+        String marca = "";
+        String modelo = "";
         String bolso = "";
         String cargador = "";
+        String encendido = "";
+        String touchpad  = "";
+        String usb       = "";
+        String monitor   = "";
+        String audio     = "";
+        String manual    = "";
+        String garantia  = "";
 
         ConexionBD conexion = new ConexionBD(getContext(), "administracion", null, 1);
         SQLiteDatabase bd = conexion.getWritableDatabase();
 
-        Cursor fila = bd.rawQuery("SELECT * FROM registroequipo ORDER BY fecha DESC", null);
+        Cursor fila = bd.rawQuery("SELECT * FROM equipos ORDER BY fecha DESC", null);
 
         if (fila.moveToFirst()) {
             do {
                 codigo = fila.getString(0);
                 nombre = fila.getString(1);
                 fecha = fila.getString(2);
-                bolso = fila.getString(3);
-                cargador = fila.getString(4);
+                modelo = fila.getString(3);
+                marca = fila.getString(4);
+                bolso = fila.getString(5);
+                cargador = fila.getString(6);
+                encendido= fila.getString(7);
+                touchpad = fila.getString(8);
+                usb      = fila.getString(9);
+                monitor  = fila.getString(10);
+                audio    = fila.getString(11);
+                manual   = fila.getString(12);
+                garantia = fila.getString(13);
+
 
                 List<Bitmap> archivos = new ArrayList<>();
 
@@ -72,8 +91,12 @@ public class FragMostrarEquipos extends Fragment {
                     }
 
                     listaRegistros.add(
-                            new RegistroEquiposDatos(archivos.get(0), archivos.get(1),
-                                    "Código: " + codigo, "Nombre: " + nombre, "Fecha: " + fecha, "Bolso: " + bolso, "Cargador: " + cargador));
+                            new RegistroEquiposDatos(archivos.get(0), archivos.get(13),
+                                    "Código: " + codigo, "Nombre: " + nombre, "Fecha: " + fecha,
+                                    "Marca: " + marca, "Modelo: " + modelo,
+                                    "Bolso: "+ bolso,"Cargador: "+ cargador, "Encendido: "+ encendido,
+                                    "Touchpad: "+ touchpad,"Usb: "+ usb, "Monitor: "+ monitor,
+                                    "Audio: "+ audio,"Manual: "+ manual,"Garantia: "+ garantia));
                 } else {
                     Toast.makeText(getContext(), "Aun no hay fotos", Toast.LENGTH_SHORT).show();
                     break;
